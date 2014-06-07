@@ -1,4 +1,4 @@
-import java.applet.Applet;
+import java.applet.*;
 import java.awt.Label;
 import java.awt.Button;
 import java.awt.Scrollbar;
@@ -32,8 +32,8 @@ class ImgPanel extends Panel
 	int x,y,x1,y1,routersToBeVisited,nextRouterPos;	
 	int iwidth1,iwidth2,iwidth4,totwidth;
 	int iheight1,iheight2,iheight4;
-	public final int packetWidth = 8;
-	public final int packetHeight = 15;
+	public int packetWidth = 8;
+	public int packetHeight = 15;
 	int counter=3,destip,currentip=1;
 	double timeDelay;
 	String ipDb[] = 
