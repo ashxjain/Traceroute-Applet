@@ -114,9 +114,9 @@ public class TraceRoute extends Applet implements Runnable
 		add(speed);
 		resetGBC(c);
 		//Fetching images
-		unit1 = getImage(getCodeBase(),"UUnit1.gif");
-		unit2 = getImage(getCodeBase(),"UUnit2.gif");
-		unit4 = getImage(getCodeBase(),"UUnit4.gif");
+		unit1 = getImage(getCodeBase(),"./img/UUnit1.gif");
+		unit2 = getImage(getCodeBase(),"./img/UUnit2.gif");
+		unit4 = getImage(getCodeBase(),"./img/UUnit4.gif");
 		nhops = Integer.parseInt(hops.getSelectedItem());
 		imgp = new ImgPanel(this);
 		setImage();
