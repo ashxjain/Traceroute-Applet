@@ -348,7 +348,7 @@ class ImgPanel extends Panel
 			}
 			if(counter==3)//First info(ip addr & first delay) from router
 			{
-				timeDelay = (double)Math.round((timeDelay/100.0 + new Random().nextDouble())*100)/100;
+				timeDelay = (double)Math.round((timeDelay/100.0 + new Random().nextDouble())*100)/100 - 1.0;
 				TraceRoute.output.append("\n"+currentip+"  "+ipDb[currentip]+"\t"+timeDelay+"ms");
 				//currentip++;
 			}
