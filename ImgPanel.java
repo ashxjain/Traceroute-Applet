@@ -18,6 +18,8 @@ import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import javax.swing.table.DefaultTableModel;
+import java.util.Random;
+
 class ImgPanel extends Panel
 {
 	Image unit1,unit2,unit4;
@@ -33,7 +35,6 @@ class ImgPanel extends Panel
 	public final int packetWidth = 8;
 	public final int packetHeight = 15;
 	int counter=3,destip,currentip=1;
-	long startTime = System.currentTimeMillis();
 	double timeDelay;
 	String ipDb[] = 
 	{
@@ -44,6 +45,7 @@ class ImgPanel extends Panel
 	boolean lastCompl=false,roundCompl=false,left = false,pause = false,dropCompl = false;
 	TraceRoute trace;
 	int TTL = 1,TTLcount=1;
+	
 	ImgPanel(TraceRoute tr)
 	{
 		super();
@@ -167,7 +169,7 @@ class ImgPanel extends Panel
 					TraceRoute.packetView.setIcmpTTL(TTL);
 					//TraceRoute.packetView.setIcmpSrcDest(0,routers+1);
 				}//End of inner else
-				startTime = System.currentTimeMillis();
+				timeDelay = 0;
 				String t = "traceroute to "+ipDb[routers+1]+",8 hops max ,60 byte packets";
 				TraceRoute.output.setText(t);
 			}//End of outer if	
@@ -177,6 +179,7 @@ class ImgPanel extends Panel
 				g.setColor(Color.blue);
 				g.fillRect(x,y,packetWidth,packetHeight);					
 				x = x+1;
+				timeDelay++;
 				if(x==routerstart-1)
 				{						
 					--TTL;					
@@ -240,6 +243,7 @@ class ImgPanel extends Panel
 					g.setColor(Color.blue);
 					g.fillRect(x,y,packetWidth,packetHeight);		
 					x = x+1;
+					timeDelay++;
 					if(x == routerstart+nextRouterPos-1 || x == dest-1)
 					{
 						--TTL;
@@ -330,6 +334,7 @@ class ImgPanel extends Panel
 				g.drawString("TTL = 64",x1,y+30);
 			}			
 			x1 = x1 - 1;
+			timeDelay++;
 		}
 		else if(x1 == st && !left)//checking if reached start
 		{
@@ -343,13 +348,13 @@ class ImgPanel extends Panel
 			}
 			if(counter==3)//First info(ip addr & first delay) from router
 			{
-				timeDelay = (System.currentTimeMillis()-startTime)/100.0;
+				timeDelay = (double)Math.round((timeDelay/100.0 + new Random().nextDouble())*100)/100;
 				TraceRoute.output.append("\n"+currentip+"  "+ipDb[currentip]+"\t"+timeDelay+"ms");
 				//currentip++;
 			}
 			else//Next 2 delays from router
 			{
-				timeDelay = (System.currentTimeMillis()-startTime)/100.0;
+				timeDelay = (double)Math.round((timeDelay/100.0 + new Random().nextDouble())*100)/100;
 				TraceRoute.output.append("\t"+timeDelay+"ms");
 			}
 			TraceRoute.packetView.setUdpSrcDest(0,routers+1);
@@ -358,7 +363,7 @@ class ImgPanel extends Panel
 				TraceRoute.packetView.setUdpTTL(TTL);
 			else
 				TraceRoute.packetView.setIcmpTTL(TTL);		 
-			startTime = System.currentTimeMillis();
+			timeDelay = 0;
 			left = true;
 			if(counter == 1 && x==dest)
 				lastCompl = true;
