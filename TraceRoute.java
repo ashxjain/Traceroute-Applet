@@ -1,3 +1,13 @@
+/*
+ *    This Traceroute applet was designed to be used in conjunction with
+ *    "Computer Networking: A Top Down Approach"
+ *    by James Kurose & Keith Ross.
+ *
+ *    Applet coded by Ashish Jain as project assigned by 
+ *    Dr. Ram Prakash Rustagi, PESIT, Bangalore, India
+ *
+ */
+
 import java.applet.Applet;
 import java.awt.Label;
 import java.awt.Button;
