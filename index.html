@@ -1,14 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-        <head>
-                <title>Applet 1</title>
-        </head>
-        <body>
-                <hr/>
-                <applet code="TraceRoute.class" width="1350" height="600">
-                        <param name = "greeting" value="Welcome"/>
-                </applet>
-                <hr/>
-                <p><a href="TraceRoute.java">The source.</a></p>
-        </body>
+    <head>
+        <title>
+            Traceroute Demo
+        </title>
+        <style type="text/css">
+            h1  {
+                    font-family:Arial, sans-serif; color:#8989DB; 
+                    font-size:13pt; font-weight:normal;
+                }
+            p   {
+                    font-family:Arial, sans-serif; font-size:10pt;
+                }
+            a:link  {color:#000066;}
+            a:visited   {color:#666666;}
+        </style>
+    </head>
+    <body bgcolor="white">
+        <h1>Demonstration of Traceroute tool</h1>
+        <p>Traceroute is a computer network diagnostic tool originally written by Van Jacobson to determine whether routing problems exist on the network. It can be used to determine the path IP packets are taking from your computer to the destination computer. Windows uses an ICMP only traceroute utility called 'tracert'. Unix based systems use a UDP based traceroute.</p> 
+        <hr/>
+        <applet code="TraceRoute.class" width="1310" height="500">
+            <param name = "greeting" value="Welcome"/>
+        </applet>
+        <hr/>
+        <p><a href="TraceRoute.java">View Applet Code</a></p>
+    </body>
 </html>
       
