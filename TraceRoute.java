@@ -6,6 +6,9 @@
  *    Applet coded by Ashish Jain as project assigned by 
  *    Dr. Ram Prakash Rustagi, PESIT, Bangalore, India
  *
+ *    Whole source Code of this project can be found at:
+ *           https://github.com/ashxjain/Traceroute-Applet 
+ *
  */
 
 import java.applet.Applet;
