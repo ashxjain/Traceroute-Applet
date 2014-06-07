@@ -63,7 +63,9 @@ class Legend extends Canvas
 			g.draw3DRect(0,h,w,h,true);
 			String s = "Traceroute Applet written by Ashish Jain & Afaaq Alam";
 			g.drawString(s,10,h+40);
-			s = "Advised by Dr.Ram Prakash Rustagi (rprustagi@pes.edu), PESIT,2013";
-			g.drawString(s,10,h+60);
+			s = "Advised by Dr.Ram Prakash Rustagi, rprustagi@pes.edu";
+            g.drawString(s,10,h+60);
+            s = "PESIT, Bangalore, India";
+            g.drawString(s,10,h+80);
     }
 }
