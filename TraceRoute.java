@@ -58,7 +58,7 @@ public class TraceRoute extends Applet implements Runnable
 		setLayout(gridBag);
 		resetGBC(c);
 		//Start button
-		start = new Button("Start");
+		start = new Button("  Start  ");
 		//c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.EAST;
 		gridBag.setConstraints(start,c);
@@ -257,6 +257,7 @@ public class TraceRoute extends Applet implements Runnable
 		}
 		if(e.target == pause)
 		{
+            start.setLabel("Resume");        
 			animation = true;
 			pause.disable();
 			start.enable();
@@ -273,6 +274,7 @@ public class TraceRoute extends Applet implements Runnable
 		}
 		if(e.target == reset)
 		{
+            start.setLabel("Start");
 			packetView.setUdpSrcDest(0,nhops);
 			packetView.setIcmpSrcDest(0,nhops);	
 			packetView.setUdpTTL(1);
