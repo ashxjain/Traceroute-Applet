@@ -47,7 +47,7 @@ class Legend extends Canvas
 				g.drawString("ICMP Time Exceeded Error Message",startx+20+packetWidth,starty+40+packetHeight);
 				g.setColor(Color.black);
 		        g.fillRect(startx+10,starty+40+packetHeight+packetHeight,packetWidth,packetHeight);
-				g.drawString("ICMP Destination Unreachable Error Message",startx+20+packetWidth,starty+50+packetHeight+packetHeight);
+				g.drawString("ICMP Destination Port Unreachable Error Message",startx+20+packetWidth,starty+50+packetHeight+packetHeight);
 			}
 			else
 			{
