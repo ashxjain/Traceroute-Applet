@@ -43,7 +43,7 @@ public class TraceRoute extends Applet implements Runnable
 	static TextArea output;
 	ImgPanel imgp;
 	Legend legend;
-	Image unit1,unit2,unit4,pack;
+	Image source,router,destination,pack;
 	int nhops;
 	Thread animate;
 	boolean freeze = true;
@@ -127,9 +127,9 @@ public class TraceRoute extends Applet implements Runnable
 		add(speed);
 		resetGBC(c);
 		//Fetching images
-		unit1 = getImage(getCodeBase(),"./img/UUnit1.gif");
-		unit2 = getImage(getCodeBase(),"./img/UUnit2.gif");
-		unit4 = getImage(getCodeBase(),"./img/UUnit4.gif");
+		source = getImage(getCodeBase(),"./img/Source.gif");
+		router = getImage(getCodeBase(),"./img/Router.gif");
+		destination = getImage(getCodeBase(),"./img/Destination.gif");
 		nhops = Integer.parseInt(hops.getSelectedItem());
 		imgp = new ImgPanel(this);
 		setImage();
