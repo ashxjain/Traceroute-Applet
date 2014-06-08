@@ -45,7 +45,7 @@ class ImgPanel extends Panel
 	boolean lastCompl=false,roundCompl=false,left = false,pause = false,dropCompl = false;
 	TraceRoute trace;
 	int TTL = 1,TTLcount=1;
-	
+	int temp = 1;
 	ImgPanel(TraceRoute tr)
 	{
 		super();
@@ -314,27 +314,64 @@ class ImgPanel extends Panel
 	public void roundTrip(Graphics g)
 	{
 		if(x1!=st && !left)//Going left
-		{ 
-			if(x==dest)
-			{
-				g.setColor(Color.black);
-			}			
-			else
-			{	
-				g.setColor(Color.red);
-			}            
-			y = ypos + 110;
+		{
+            if(x==dest)
+                g.setColor(Color.black);
+            else
+                g.setColor(Color.red); 
+            if(x1==x)
+            {
+                try
+                {
+                    Thread.sleep(600);
+                }
+                catch (InterruptedException e)
+                {
+                }
+                temp = 1;
+                TTL = 128;
+                TraceRoute.packetView.setIcmpTTL(TTL);
+            }
+            else if(x1==x-temp*iwidth2)
+            {
+                try
+                {
+                    Thread.sleep(300);
+                }
+                catch (InterruptedException e)
+                {
+                }
+                TTL--;
+                temp++;
+                TraceRoute.packetView.setIcmpTTL(TTL);
+            }
+            else if(x1 == st+1)
+            {
+                try
+                {
+                    Thread.sleep(300);
+                }
+                catch (InterruptedException e)
+                {
+                }
+            }
+            else if(x1 == st+3)
+            {
+                TTL--;
+                TraceRoute.packetView.setIcmpTTL(TTL);
+            }
+            x1 = x1 -1;
+            y = ypos + 110;
+            if(TraceRoute.client.getSelectedIndex()==0)
+            {
+                g.drawString("TTL = "+TTL,x1,y+30);
+            }           
+            else
+            {   
+                g.drawString("TTL = "+TTL,x1,y+30);
+            }
             g.fillRect(x1,y,packetWidth,packetHeight);
-			if(TraceRoute.client.getSelectedIndex()==0)
-			{
-				g.drawString("TTL = 128",x1,y+30);
-			}			
-			else
-			{	
-				g.drawString("TTL = 64",x1,y+30);
-			}			
-			x1 = x1 - 1;
-			timeDelay++;
+            timeDelay++;
 		}
 		else if(x1 == st && !left)//checking if reached start
 		{
@@ -348,7 +385,7 @@ class ImgPanel extends Panel
 			}
 			if(counter==3)//First info(ip addr & first delay) from router
 			{
-				timeDelay = (double)Math.round((timeDelay/100.0 + new Random().nextDouble() - 1.0)*100)/100;
+				timeDelay = (double)Math.round((timeDelay/100.0 + new Random().nextDouble())*100)/100;
 				TraceRoute.output.append("\n"+currentip+"  "+ipDb[currentip]+"\t"+timeDelay+"ms");
 				//currentip++;
 			}
@@ -429,6 +466,7 @@ class ImgPanel extends Panel
 			else	
 				g.drawString("TTL = "+TTL,x1,y-10);	
 			x1 = x1+1;
+            timeDelay++;
 			if(counter == 0)
 				dropCompl = true;
 		}
