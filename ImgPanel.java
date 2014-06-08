@@ -22,7 +22,7 @@ import java.util.Random;
 
 class ImgPanel extends Panel
 {
-	Image unit1,unit2,unit4;
+	Image source,router,destination;
 	int routers;
 	Dimension offDimension;
 	Image offImage;
@@ -50,9 +50,9 @@ class ImgPanel extends Panel
 	{
 		super();
 		trace = tr;
-		unit1 = tr.unit1;
-		unit2 = tr.unit2;
-		unit4 = tr.unit4;
+		source = tr.source;
+		router = tr.router;
+		destination = tr.destination;
 		this.routers = tr.nhops-1;
 		setBackground(Color.white);
 	}//End of constructor	
@@ -107,12 +107,12 @@ class ImgPanel extends Panel
 	}//End of isBetween
 	public void drawOn(Graphics g)
 	{
-		iwidth1 = unit1.getWidth(this)/2;
-        iheight1 = unit1.getHeight(this)/2;
-		iwidth2 = unit2.getWidth(this)/4;
-        iheight2 = unit2.getHeight(this)/4;
-        iwidth4 = unit4.getWidth(this)/2;
-        iheight4 = unit4.getHeight(this)/2;
+		iwidth1 = source.getWidth(this)/2;
+        iheight1 = source.getHeight(this)/2;
+		iwidth2 = router.getWidth(this)/4;
+        iheight2 = router.getHeight(this)/4;
+        iwidth4 = destination.getWidth(this)/2;
+        iheight4 = destination.getHeight(this)/2;
         totwidth = iwidth1 + iwidth4;
 		int i = routers;
 		while(i>0)
@@ -123,19 +123,19 @@ class ImgPanel extends Panel
 		initpos = size().width/2 - totwidth/2 ;
 		xpos = initpos ;		
 		ypos = 30;			
-	    g.drawImage(unit1,xpos,ypos+25,iwidth1,iheight1,this);
+	    g.drawImage(source,xpos,ypos+25,iwidth1,iheight1,this);
 		xpos = xpos + iwidth1;
 		g.drawString("1", xpos-7, ypos+85);
 		i = routers;
 		while(i>0)
 		{
-			g.drawImage(unit2,xpos,ypos+75,iwidth2,iheight2,this);
+			g.drawImage(router,xpos,ypos+75,iwidth2,iheight2,this);
 			xpos = xpos + iwidth2;
 			g.drawString((routers-i+2)+"", xpos-8, ypos+85);
 			destip = routers-i+2;
 			i--;
 		}//End of while loop		
-		g.drawImage(unit4,xpos,ypos+25,iwidth4,iheight4,this);		
+		g.drawImage(destination,xpos,ypos+25,iwidth4,iheight4,this);		
     }//End of drawOn
 	public void animOn(Graphics g)
 	{		
