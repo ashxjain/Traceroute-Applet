@@ -316,7 +316,9 @@ class ImgPanel extends Panel
 		if(x1!=st && !left)//Going left
 		{
             if(x==dest)
+            {
                 g.setColor(Color.black);
+            }
             else
                 g.setColor(Color.red); 
             if(x1==x)
@@ -332,7 +334,20 @@ class ImgPanel extends Panel
                 TTL = 128;
                 TraceRoute.packetView.setIcmpTTL(TTL);
             }
-            else if(x1==x-temp*iwidth2)
+            else if(x1==x-temp*iwidth2+42 && x!=dest)
+            {
+                try
+                {
+                    Thread.sleep(300);
+                }
+                catch (InterruptedException e)
+                {
+                }
+                TTL--;
+                temp++;
+                TraceRoute.packetView.setIcmpTTL(TTL);
+            }
+            else if(x1==x-temp*iwidth2+50 && x==dest)
             {
                 try
                 {
@@ -366,8 +381,8 @@ class ImgPanel extends Panel
             {
                 g.drawString("TTL = "+TTL,x1,y+30);
             }           
-            else
-            {   
+            else//Different default TTL for windows??
+            {
                 g.drawString("TTL = "+TTL,x1,y+30);
             }
             g.fillRect(x1,y,packetWidth,packetHeight);
