@@ -193,7 +193,7 @@ public class TraceRoute extends Applet implements Runnable
 	{
 		Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
 		//Animation Loop
-		while(Thread.currentThread() == animate && frameNumber < 100000)
+		while(Thread.currentThread() == animate && frameNumber < 1000000)
 		{
 			animation = true;
 			frameNumber++;
