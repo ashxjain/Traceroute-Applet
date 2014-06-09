@@ -1,0 +1,12 @@
+h1  {
+        font-family:Arial, sans-serif; 
+        color:#8989DB;
+        font-size:13pt; 
+        font-weight:normal;
+    }
+p   {
+        font-family:Arial, sans-serif; 
+        font-size:10pt;
+    }
+a:link {color:#000066;}
+a:visited {color:#666666;}
