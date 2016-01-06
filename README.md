@@ -9,8 +9,6 @@ Traceroute - Java Applet
 
 * In this applet I have implemented both versions. 
 
-* This applet will be uploaded to http://wps.pearsoned.com/ecs_kurose_compnetw_6/216/55463/14198700.cw/index.html website.
-
 Requirements
 ------------
 * You need a *java compatible* browser
